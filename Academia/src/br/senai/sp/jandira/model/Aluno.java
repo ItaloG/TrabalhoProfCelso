@@ -10,7 +10,7 @@ public class Aluno {
 	private double peso;
 	private double altura;
 	private LocalDate dataDeNascimento;
-	private char nivelDeAtividade;
+	private int nivelDeAtividade;
 	
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -21,7 +21,13 @@ public class Aluno {
 	}
 	
 	public void setSexo(char sexo) {
-		this.sexo= sexo;
+		if (sexo == 'm') {
+			this.sexo = 'm';
+		}else {
+			if (sexo == 'f') {
+				this.sexo = 'f';
+			}
+		}
 	}
 	
 	public char getSexo() {
@@ -35,32 +41,193 @@ public class Aluno {
 	public double getPeso() {
 		return this.peso;
 	}
-	
-	public double getAltura() {
-		return this.altura;
-	}
-	
 	public void setAltura(double altura) {
 		this.altura = altura;
 	}
 	
-//	public void setNivelDeAtividade(char nivelDeAtividade) {
-//		this.nivelDeAtividade = nivelDeAtividade;
-//	}
-//	
-//	public char getNivelDeAtividade() {
-//		return this.nivelDeAtividade;
-//	}
+	public double getAltura() {
+		return this.altura;
+	}
+
+	public void setNivelDeAtividade(int nivelDeAtividade) {
+		if (nivelDeAtividade == 0) {
+			this.nivelDeAtividade = 0;//nenhuma
+		}else {
+			if (nivelDeAtividade == 1) {
+				this.nivelDeAtividade = 1;//leve
+			}else {
+				if (nivelDeAtividade == 2) {
+					this.nivelDeAtividade = 2;//moderada
+				}else {
+					if (nivelDeAtividade == 3) {
+						this.nivelDeAtividade = 3;//intensa
+					}
+				}
+			}
+		}
+	}
 	
-	public void setDataDeNascimento(LocalDate dataDeNascimento) {
+	public int getNivelDeAtividade() {
+		return this.nivelDeAtividade;
+	}
+	
+	public void setDataDeNascimento(LocalDate dataDeNascimento) { //representa: LocalDate dataDeNascimento = LocalDate.algumaCoisa 
 		this.dataDeNascimento = dataDeNascimento;
 	}
 	
 	public int getIdade(){
-		LocalDate hoje  = LocalDate.now();
-		Period periodo = Period.between(this.dataDeNascimento, hoje);
+		LocalDate hoje  = LocalDate.now(); //guarda a data atual baseada no computador
+		Period periodo = Period.between(this.dataDeNascimento, hoje); //retorna um periodo, esse perido é seu tempo de vida.
 		 
-		return periodo;
+		return periodo.getYears();
 	}
-
+	
+	public double getImc() {
+		return this.peso/Math.pow(this.altura, 2);
+	}
+	
+	public String getStatusImc() {
+		if (getImc() <= 18.5 ) {
+			return "Abaixo do peso";
+		} else {
+			if (getImc() >= 18.6 && <= 24.9) {
+				return "Peso ideal(Parabens)";
+			}else {
+				if (getImc() >= 25 && <= 29.9) {
+					return "Levemente acima do peso";
+				}else {
+					if (getImc() >= 30 && <= 34.9) {
+						return "Obesidade grau I";
+					}else {
+						if (getImc() >= 35 && <= 39.9) {
+							return "Obesidade grau II (Severa)";
+						}else {
+							if (getImc() >= 40) {
+								return "Obesidade grau III (Mórbida)";
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	public double getNcd() {
+		if (this.sexo == '') { // calculos NCD para o sexo masculino
+			if (this.nivelDeAtividade == 0) { // Atividade Nenhuuma
+				if (getIdade() >= 18 && <= 30) {
+					return 15.3*this.peso + 679;
+				}else {
+					if (getIdade() >= 31 && <= 60) {
+						return 11.6*this.peso + 879;
+					}else {
+						if (getIdade() > 60) {
+							return 13.5*this.peso + 487;
+						}
+					}
+				}
+			}else {
+				if (this.nivelDeAtividade == 1) {// Atividade leve
+					if (getIdade() >= 18 && <= 30) {
+						return (15.3*this.peso + 679)*1.5;
+					}else {
+						if (getIdade() >= 31 && <= 60) {
+							(return 11.6*this.peso + 879)*1.5;
+						}else {
+							if (getIdade() > 60) {
+								return (13.5*this.peso + 487)*1.5;
+							}
+						}
+					}
+				}else {
+					if (this.nivelDeAtividade == 2) {// Atividade moderada
+						if (getIdade() >= 18 && <= 30) {
+							return (15.3*this.peso + 679)*1.8;
+						}else {
+							if (getIdade() >= 31 && <= 60) {
+								(return 11.6*this.peso + 879)*1.8;
+							}else {
+								if (getIdade() > 60) {
+									return (13.5*this.peso + 487)*1.8;
+								}
+							}
+						}
+					}else {
+						if (this.nivelDeAtividade == 2) {// Atividade intensa
+							if (getIdade() >= 18 && <= 30) {
+								return (15.3*this.peso + 679)*1.8;
+							}else {
+								if (getIdade() >= 31 && <= 60) {
+									(return 11.6*this.peso + 879)*1.8;
+								}else {
+									if (getIdade() > 60) {
+										return (13.5*this.peso + 487)*1.8;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+	}else {
+		if (this.sexo == 'f') { // calculos NCD para o sexo feminino
+		
+			if (this.nivelDeAtividade == 0) { // Atividade Nenhuuma
+				if (getIdade() >= 18 && <= 30) {
+					return 15.3*this.peso + 679;
+				}else {
+					if (getIdade() >= 31 && <= 60) {
+						return 11.6*this.peso + 879;
+					}else {
+						if (getIdade() > 60) {
+							return 13.5*this.peso + 487;
+						}
+					}
+				}
+			}else {
+				if (this.nivelDeAtividade == 1) {// Atividade leve
+					if (getIdade() >= 18 && <= 30) {
+						return (15.3*this.peso + 679)*1.5;
+					}else {
+						if (getIdade() >= 31 && <= 60) {
+							(return 11.6*this.peso + 879)*1.5;
+						}else {
+							if (getIdade() > 60) {
+								return (13.5*this.peso + 487)*1.5;
+							}
+						}
+					}
+				}else {
+					if (this.nivelDeAtividade == 2) {// Atividade moderada
+						if (getIdade() >= 18 && <= 30) {
+							return (15.3*this.peso + 679)*1.8;
+						}else {
+							if (getIdade() >= 31 && <= 60) {
+								(return 11.6*this.peso + 879)*1.8;
+							}else {
+								if (getIdade() > 60) {
+									return (13.5*this.peso + 487)*1.8;
+								}
+							}
+						}
+					}else {
+						if (this.nivelDeAtividade == 2) {// Atividade intensa
+							if (getIdade() >= 18 && <= 30) {
+								return (15.3*this.peso + 679)*1.8;
+							}else {
+								if (getIdade() >= 31 && <= 60) {
+									(return 11.6*this.peso + 879)*1.8;
+								}else {
+									if (getIdade() > 60) {
+											return (13.5*this.peso + 487)*1.8;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
