@@ -90,21 +90,19 @@ public class Aluno {
 		if (getImc() <= 18.5 ) {
 			return "Abaixo do peso";
 		} else {
-			if (getImc() >= 18.6 && <= 24.9) {
+			if (getImc() >= 18.6 && getImc() <= 24.9) {
 				return "Peso ideal(Parabens)";
 			}else {
-				if (getImc() >= 25 && <= 29.9) {
+				if (getImc() >= 25 && getImc() <= 29.9) {
 					return "Levemente acima do peso";
 				}else {
-					if (getImc() >= 30 && <= 34.9) {
+					if (getImc() >= 30 && getImc() <= 34.9) {
 						return "Obesidade grau I";
 					}else {
-						if (getImc() >= 35 && <= 39.9) {
+						if (getImc() >= 35 && getImc() <= 39.9) {
 							return "Obesidade grau II (Severa)";
 						}else {
-							if (getImc() >= 40) {
 								return "Obesidade grau III (Mórbida)";
-							}
 						}
 					}
 				}
@@ -113,121 +111,8 @@ public class Aluno {
 	}
 	
 	public double getNcd() {
-		if (this.sexo == '') { // calculos NCD para o sexo masculino
-			if (this.nivelDeAtividade == 0) { // Atividade Nenhuuma
-				if (getIdade() >= 18 && <= 30) {
-					return 15.3*this.peso + 679;
-				}else {
-					if (getIdade() >= 31 && <= 60) {
-						return 11.6*this.peso + 879;
-					}else {
-						if (getIdade() > 60) {
-							return 13.5*this.peso + 487;
-						}
-					}
-				}
-			}else {
-				if (this.nivelDeAtividade == 1) {// Atividade leve
-					if (getIdade() >= 18 && <= 30) {
-						return (15.3*this.peso + 679)*1.5;
-					}else {
-						if (getIdade() >= 31 && <= 60) {
-							(return 11.6*this.peso + 879)*1.5;
-						}else {
-							if (getIdade() > 60) {
-								return (13.5*this.peso + 487)*1.5;
-							}
-						}
-					}
-				}else {
-					if (this.nivelDeAtividade == 2) {// Atividade moderada
-						if (getIdade() >= 18 && <= 30) {
-							return (15.3*this.peso + 679)*1.8;
-						}else {
-							if (getIdade() >= 31 && <= 60) {
-								(return 11.6*this.peso + 879)*1.8;
-							}else {
-								if (getIdade() > 60) {
-									return (13.5*this.peso + 487)*1.8;
-								}
-							}
-						}
-					}else {
-						if (this.nivelDeAtividade == 2) {// Atividade intensa
-							if (getIdade() >= 18 && <= 30) {
-								return (15.3*this.peso + 679)*1.8;
-							}else {
-								if (getIdade() >= 31 && <= 60) {
-									(return 11.6*this.peso + 879)*1.8;
-								}else {
-									if (getIdade() > 60) {
-										return (13.5*this.peso + 487)*1.8;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-	}else {
-		if (this.sexo == 'f') { // calculos NCD para o sexo feminino
-		
-			if (this.nivelDeAtividade == 0) { // Atividade Nenhuuma
-				if (getIdade() >= 18 && <= 30) {
-					return 15.3*this.peso + 679;
-				}else {
-					if (getIdade() >= 31 && <= 60) {
-						return 11.6*this.peso + 879;
-					}else {
-						if (getIdade() > 60) {
-							return 13.5*this.peso + 487;
-						}
-					}
-				}
-			}else {
-				if (this.nivelDeAtividade == 1) {// Atividade leve
-					if (getIdade() >= 18 && <= 30) {
-						return (15.3*this.peso + 679)*1.5;
-					}else {
-						if (getIdade() >= 31 && <= 60) {
-							(return 11.6*this.peso + 879)*1.5;
-						}else {
-							if (getIdade() > 60) {
-								return (13.5*this.peso + 487)*1.5;
-							}
-						}
-					}
-				}else {
-					if (this.nivelDeAtividade == 2) {// Atividade moderada
-						if (getIdade() >= 18 && <= 30) {
-							return (15.3*this.peso + 679)*1.8;
-						}else {
-							if (getIdade() >= 31 && <= 60) {
-								(return 11.6*this.peso + 879)*1.8;
-							}else {
-								if (getIdade() > 60) {
-									return (13.5*this.peso + 487)*1.8;
-								}
-							}
-						}
-					}else {
-						if (this.nivelDeAtividade == 2) {// Atividade intensa
-							if (getIdade() >= 18 && <= 30) {
-								return (15.3*this.peso + 679)*1.8;
-							}else {
-								if (getIdade() >= 31 && <= 60) {
-									(return 11.6*this.peso + 879)*1.8;
-								}else {
-									if (getIdade() > 60) {
-											return (13.5*this.peso + 487)*1.8;
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
+		if (getIdade() >= 18) {
+			return (double) (15.3 * peso + 679);
 		}
 	}
 }
