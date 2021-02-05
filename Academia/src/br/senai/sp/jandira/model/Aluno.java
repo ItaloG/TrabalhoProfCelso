@@ -41,6 +41,7 @@ public class Aluno {
 	public double getPeso() {
 		return this.peso;
 	}
+	
 	public void setAltura(double altura) {
 		this.altura = altura;
 	}
@@ -89,30 +90,158 @@ public class Aluno {
 	public String getStatusImc() {
 		if (getImc() <= 18.5 ) {
 			return "Abaixo do peso";
-		} else {
-			if (getImc() >= 18.6 && getImc() <= 24.9) {
+		} else if (getImc() >= 18.6 && getImc() <= 24.9) {
 				return "Peso ideal(Parabens)";
-			}else {
-				if (getImc() >= 25 && getImc() <= 29.9) {
+			}else if (getImc() >= 25 && getImc() <= 29.9) {
 					return "Levemente acima do peso";
-				}else {
-					if (getImc() >= 30 && getImc() <= 34.9) {
+				}else if (getImc() >= 30 && getImc() <= 34.9) {
 						return "Obesidade grau I";
-					}else {
-						if (getImc() >= 35 && getImc() <= 39.9) {
+					}else if (getImc() >= 35 && getImc() <= 39.9) {
 							return "Obesidade grau II (Severa)";
-						}else {
+						}else if(getImc() >= 40){
 								return "Obesidade grau III (Mórbida)";
+						}else {
+							return "Falha na requisição";
 						}
 					}
+	
+	public double getNcd() {
+		///////////////////////////////////
+		////  NCD PARA SEXO MACULINO    ///
+		///////////////////////////////////
+		if (this.sexo == 'm') {
+			///////////////////////////////////
+			//// NIVEL DE ATIVIDADE NENHUMA ///
+			///////////////////////////////////
+			if (this.nivelDeAtividade == 0) {
+				if (getIdade() >= 18 && getIdade() <= 30) {
+					return 15.3*this.peso + 679;
+				}else if (getIdade() >= 31 && getIdade() <= 60) {
+					return 11.6*this.peso + 879;
+				}else if (getIdade() >= 60) {
+					return 13.5*this.peso + 487;
+				}else {
+					return 0;
 				}
+				///////////////////////////////////
+				//// NIVEL DE ATIVIDADE LEVE    ///
+				///////////////////////////////////
+			}else if (this.nivelDeAtividade == 1) {
+				if (getIdade() >= 18 && getIdade() <= 30) {
+					return (15.3*this.peso + 679)*1.5;
+				}else if (getIdade() >= 31 && getIdade() <= 60) {
+					return (11.6*this.peso + 879)*1.5;
+				}else if (getIdade() >= 60) {
+					return (13.5*this.peso + 487)*1.5;
+				}else {
+					return 0;
+				}
+				///////////////////////////////////
+				//// NIVEL DE ATIVIDADE MODERADA///
+				///////////////////////////////////
+			}else if (this.nivelDeAtividade == 2) {
+				if (getIdade() >= 18 && getIdade() <= 30) {
+					return (15.3*this.peso + 679)*1.8;
+				}else if (getIdade() >= 31 && getIdade() <= 60) {
+					return (11.6*this.peso + 879)*1.8;
+				}else if (getIdade() >= 60) {
+					return (13.5*this.peso + 487)*1.8;
+				}else {
+					return 0;
+				}
+				///////////////////////////////////
+				//// NIVEL DE ATIVIDADE INTENSA ///
+				///////////////////////////////////
+			}else if (this.nivelDeAtividade == 3) {
+				if (getIdade() >= 18 && getIdade() <= 30) {
+					return (15.3*this.peso + 679)*2.1;
+				}else if (getIdade() >= 31 && getIdade() <= 60) {
+					return (11.6*this.peso + 879)*2.1;
+				}else if (getIdade() >= 60) {
+					return (13.5*this.peso + 487)*2.1;
+				}else {
+					return 0;
+				}
+			}else {
+				return 0;
 			}
+			
+			///////////////////////////////////
+			////  NCD DO SEXO FEMININO      ///
+			///////////////////////////////////
+			
+		}else if (this.sexo == 'f') {
+			///////////////////////////////////
+			//// NIVEL DE ATIVIDADE NENHUMA ///
+			///////////////////////////////////
+			if (this.nivelDeAtividade == 0) {
+				if (getIdade() >= 18 && getIdade() <= 30) {
+					return 14.7*this.peso + 496;
+				}else if (getIdade() >= 31 && getIdade() <= 60) {
+					return 8.7*this.peso + 829;
+				}else if (getIdade() >= 60) {
+					return 10.5*this.peso + 596;
+					///////////////////////////////////
+					//// NIVEL DE ATIVIDADE LEVE    ///
+					///////////////////////////////////
+				}else if (this.nivelDeAtividade == 1) {
+					if (getIdade() >= 18 && getIdade() <= 30) {
+						return (14.7*this.peso + 496)*1.6;
+					}else if (getIdade() >= 31 && getIdade() <= 60) {
+						return (8.7*this.peso + 829)*1.6;
+					}else if (getIdade() >= 60) {
+						return (10.5*this.peso + 596)*1.6;
+						////////////////////////////////////
+						//// NIVEL DE ATIVIDADE MODERADA ///
+						///////////////////////////////////
+					}else if (this.nivelDeAtividade == 2) {
+						if (getIdade() >= 18 && getIdade() <= 30) {
+							return (14.7*this.peso + 496)*1.6;
+						}else if (getIdade() >= 31 && getIdade() <= 60) {
+							return (8.7*this.peso + 829)*1.6;
+						}else if (getIdade() >= 60) {
+							return (10.5*this.peso + 596)*1.6;
+							///////////////////////////////////
+							//// NIVEL DE ATIVIDADE INTENSA ///
+							///////////////////////////////////
+						}else if (this.nivelDeAtividade == 3) {
+							if (getIdade() >= 18 && getIdade() <= 30) {
+								return (14.7*this.peso + 496)*1.8;
+							}else if (getIdade() >= 31 && getIdade() <= 60) {
+								return (8.7*this.peso + 829)*1.8;
+							}else if (getIdade() >= 60) {
+								return (10.5*this.peso + 596)*1.8;
+							}else {
+								return 0;
+							}
+						}else {
+							return 0;
+						}
+					}else {
+						return 0;
+					}
+				}else {
+					return 0;
+				}
+			}else {
+				return 0;
+			}
+		}else {
+			return 0;
 		}
 	}
 	
-	public double getNcd() {
-		if (getIdade() >= 18) {
-			return (double) (15.3 * peso + 679);
-		}
+	///////////////////////////////////
+	//// MÉTODO PARA CASO HAJA FALHA ///
+	///////////////////////////////////
+	
+	public String getFalha() {
+			if (getNcd() == 0) {
+				return "Há uma falha na sua requisição";
+			}else {
+				return "";
+			}
 	}
+	
+	
 }

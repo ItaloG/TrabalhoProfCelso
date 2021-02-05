@@ -1,0 +1,14 @@
+package br.senai.sp.jandira.gui;
+
+public class FrameAcademia {
+	///////////////////////////////////
+	////  MÉTODO PARA CRIAR A TELA  ///
+	///////////////////////////////////
+	
+	public void criarTela(){
+		
+		// contrução tela 
+		
+	}
+	
+}
