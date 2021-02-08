@@ -1,0 +1,74 @@
+package br.senai.sp.jandira.gui;
+
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class FrameAcademia {
+	///////////////////////////////////
+	////  MÉTODO PARA CRIAR A TELA  ///
+	///////////////////////////////////
+	
+	public void criarTela(){
+		
+		//  Tela 
+		JFrame tela = new JFrame();
+		tela.setTitle("Registro Academia");
+		tela.setSize(1200, 700);
+		tela.setDefaultCloseOperation(3);
+		tela.setLayout(null);
+		
+		// JLabel nome
+		JLabel labelNome = new JLabel();
+		labelNome.setText("Nome: ");
+		labelNome.setBounds(30, 40, 50, 30);
+		
+		//JTextFild nome
+		JTextField textNome = new JTextField();
+		textNome.setBounds(75, 40, 300, 30);
+		
+		
+		// JLabel Sexo
+			JLabel labelSexo = new JLabel();
+			labelSexo.setText("Sexo: ");
+			labelSexo.setBounds(30, 90, 50, 30);
+			
+		//JTextFild Sexo
+			JTextField textSexo = new JTextField();
+			textSexo.setBounds(75, 90, 300, 30);
+			
+		// JLabel Data
+			JLabel labelData = new JLabel();
+			labelData.setText("Data De Nascimento: ");
+			labelData.setBounds(480, 40, 130, 30);
+						
+		//JTextFild Data
+			JTextField textData = new JTextField();
+			textData.setBounds(610, 40, 100, 30);
+			
+		// JLabel Atiidade
+			JLabel labelAtividade = new JLabel();
+			labelAtividade.setText("Data De Nascimento: ");
+			labelAtividade.setBounds(480, 40, 130, 30);
+									
+		//JTextFild Atividade
+			JTextField textAtividade = new JTextField();
+			textAtividade.setBounds(610, 40, 100, 30);
+			
+			
+			
+		tela.getContentPane().add(textNome);
+		tela.getContentPane().add(labelNome);
+		tela.getContentPane().add(textSexo);
+		tela.getContentPane().add(labelSexo);
+		tela.getContentPane().add(textData);
+		tela.getContentPane().add(labelData);
+		tela.getContentPane().add(textAtividade);
+		tela.getContentPane().add(labelAtividade);
+		
+		
+		tela.setVisible(true);
+	}
+	
+}
