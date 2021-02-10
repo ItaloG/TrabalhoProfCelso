@@ -1,6 +1,7 @@
 package br.senai.sp.jandira.gui;
 
 
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -50,20 +51,20 @@ public class FrameAcademia {
 		// JLabel Peso
 			JLabel labelPeso = new JLabel();
 			labelPeso.setText("Peso: ");
-			labelPeso.setBounds(30, 150, 130, 30);
+			labelPeso.setBounds(30, 160, 130, 30);
 									
 		//JTextFild Peso
 			JTextField textPeso = new JTextField();
-			textPeso.setBounds(75, 150, 100, 30);
+			textPeso.setBounds(75, 160, 100, 30);
 			
 		// JLabel Altura
 			JLabel labelAltura = new JLabel();
-			labelAltura.setText("Peso: ");
-			labelAltura.setBounds(30, 150, 130, 30);
+			labelAltura.setText("altura: ");
+			labelAltura.setBounds(30, 200, 130, 30);
 									
 		//JTextFild Altura
 			JTextField textAltura = new JTextField();
-			textAltura.setBounds(75, 150, 100, 30);
+			textAltura.setBounds(75, 200, 100, 30);
 			
 			
 			
@@ -71,10 +72,23 @@ public class FrameAcademia {
 			JLabel labelAtividade = new JLabel();
 			labelAtividade.setText("Nivel De Atividade: ");
 			labelAtividade.setBounds(480, 90, 130, 30);
-//									
+			
+			String niveisDeAtividade[] = {"Nunhema", 
+					"Leve", 
+					"Moderada", 
+					"Intensa"};
+			JComboBox<String> combo = new JComboBox<String>(niveisDeAtividade);
+			combo.setBounds(610, 90, 130, 30);
+
+			
+			
+			
+			
+			
 //		//JTextFild Atividade
 //			JTextField textAtividade = new JTextField();
 //			textAtividade.setBounds(610, 40, 100, 30);
+			
 			
 		tela.getContentPane().add(textNome);
 		tela.getContentPane().add(labelNome);
@@ -88,6 +102,7 @@ public class FrameAcademia {
 		tela.getContentPane().add(labelAltura);
 //		tela.getContentPane().add(textAtividade);
 		tela.getContentPane().add(labelAtividade);
+		tela.getContentPane().add(combo);
 		
 		
 		tela.setVisible(true);

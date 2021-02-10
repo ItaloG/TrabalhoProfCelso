@@ -1,6 +1,6 @@
-package br.senai.sp.jandira;
+package vetros;
 
-public class App {
+public class Vetor {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
